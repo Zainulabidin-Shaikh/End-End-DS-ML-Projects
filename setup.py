@@ -35,5 +35,3 @@ packages=find_packages(),
 install_requires=get_requirements('requirements.txt') # so we make a get_requirements function that takes requirements file as a parameter
 # and install all the requirements packages
 )
-
-
