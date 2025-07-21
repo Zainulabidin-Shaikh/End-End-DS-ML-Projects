@@ -6,4 +6,5 @@ scikit-learn
 catboost
 xgboost
 Flask
+dill
 # -e . # this will automatically trigger setup.py file, and this line comes in extras because its not a package so we have to eliminate it from reading in our function (get_requirements)

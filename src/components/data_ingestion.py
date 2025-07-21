@@ -34,8 +34,8 @@ repr, and other methods for classes. Perfect for configuration and parameter sto
 
 # ========================== PIPELINE COMPONENTS ==========================
 
-# from src.components.data_transformation import DataTransformation
-# from src.components.data_transformation import DataTransformationConfig
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
 '''
 ✅ These two handle the data preprocessing step — 
 null removal, encoding, scaling, and converting data to arrays.
@@ -168,12 +168,12 @@ if __name__ == "__main__":
 
     # 🔽 STEP 3: Run Data Ingestion
     obj = DataIngestion()  # Create an instance of the DataIngestion class
-    obj.initiate_data_ingestion()
-    # train_data, test_data = obj.initiate_data_ingestion()  # Start ingestion, get file paths
+    # obj.initiate_data_ingestion()
+    train_data, test_data = obj.initiate_data_ingestion()  # Start ingestion, get file paths
 
     # 🔽 STEP 4: Data Transformation
-    # data_transformation = DataTransformation()  # Create instance of transformation class
-    # train_arr, test_arr, _ = data_transformation.initiate_data_transformation(train_data, test_data)
+    data_transformation = DataTransformation()  # Create instance of transformation class
+    train_arr, test_arr, _ = data_transformation.initiate_data_transformation(train_data, test_data)
     '''
     ✅ This step processes the train and test data:
     - Handles missing values, encoding, feature scaling
