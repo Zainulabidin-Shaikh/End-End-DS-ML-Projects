@@ -1,20 +1,20 @@
-from flask import Flask,request,render_template
+from flask import Flask, request, render_template
 import numpy as np
 import pandas as pd
+import webbrowser  # Import webbrowser to open the browser
 
 from sklearn.preprocessing import StandardScaler
-from src.pipeline.predict_pipeline import CustomData,PredictPipeline
+from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
-application=Flask(__name__)
+application = Flask(__name__)
+app = application
 
-app=application
-
-## Route for a home page
-
+## Route for the default page
 @app.route('/')
 def index():
-    return render_template('index.html') 
+    return render_template('index.html')
 
+## Route for prediction page
 @app.route('/predictdata', methods=['GET', 'POST'])
 def predict_datapoint():
     if request.method == 'GET':
@@ -38,7 +38,8 @@ def predict_datapoint():
         except Exception as e:
             print(f"Error: {e}")
             return render_template('home.html', results="Error occurred")
-    
 
-if __name__=="__main__":
-    app.run(host="0.0.0.0")        
+if __name__ == "__main__":
+    # Open browser to /predictdata on startup
+    webbrowser.open('http://127.0.0.1:5000/predictdata')
+    app.run(host="0.0.0.0", port=5000, debug=True)
