@@ -41,8 +41,8 @@ from src.components.data_transformation import DataTransformationConfig
 null removal, encoding, scaling, and converting data to arrays.
 '''
 
-# from src.components.model_trainer import ModelTrainerConfig
-# from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 '''
 ✅ These handle the final step — training the machine learning model
 and evaluating its performance.
@@ -182,8 +182,8 @@ if __name__ == "__main__":
     '''
 
     # 🔽 STEP 5: Model Training
-    # modeltrainer = ModelTrainer()  # Create instance of model trainer class
-    # print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
+    modeltrainer = ModelTrainer()  # Create instance of model trainer class
+    print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
     '''
     ✅ Trains the machine learning model on the processed train array
     ✅ Tests it on the test array
