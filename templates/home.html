@@ -7,82 +7,96 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background: linear-gradient(135deg, #6b48ff, #00d2ff);
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
             width: 100%;
-            max-width: 500px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 550px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        .container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
-        .form-group {
-            margin-bottom: 1.5rem;
+        .form-group label {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            display: block;
         }
-        select, input[type="number"] {
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 0.5rem;
+        .form-group select, .form-group input[type="number"] {
             width: 100%;
-            transition: border-color 0.3s ease;
+            padding: 0.75rem;
+            border: 2px solid #e0e7ff;
+            border-radius: 10px;
+            background: #f9fafb;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        select:focus, input[type="number"]:focus {
-            border-color: #6b48ff;
+        .form-group select:focus, .form-group input[type="number"]:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 8px rgba(42, 82, 152, 0.2);
             outline: none;
         }
-        .btn-primary {
-            background: linear-gradient(90deg, #6b48ff, #00d2ff);
+        .submit-btn {
+            background: linear-gradient(90deg, #4c6ef5, #6b46c1);
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            transition: transform 0.2s ease, background 0.3s ease;
+            padding: 0.9rem;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: transform 0.3s ease, background 0.3s ease;
             width: 100%;
-            cursor: pointer;
         }
-        .btn-primary:hover {
+        .submit-btn:hover {
             transform: scale(1.05);
-            background: linear-gradient(90deg, #5a3ce6, #00b5e2);
+            background: linear-gradient(90deg, #3b5bdb, #5a36a3);
         }
         .result {
-            color: #2d3748;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-top: 1.5rem;
+            color: #1e3c72;
+            font-size: 1.8rem;
+            font-weight: 700;
             text-align: center;
-            animation: fadeIn 1s ease-in;
+            margin-top: 1.5rem;
+            animation: slideUp 0.8s ease-out;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .title {
+            color: #2a5298;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Student Exam Performance Predictor</h1>
-        <form action="/predictdata" method="post" class="space-y-4">
+    <div class="container">
+        <h1 class="title">Student Exam Performance Predictor</h1>
+        <form action="/predictdata" method="post" class="space-y-6">
             <div class="form-group">
-                <label class="block text-sm font-medium text-gray-700">Gender</label>
-                <select class="w-full p-2" name="gender" required>
-                    <option value="" disabled selected>Select your Gender</option>
+                <label>Gender</label>
+                <select name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="block text-sm font-medium text-gray-700">Race or Ethnicity</label>
-                <select class="w-full p-2" name="ethnicity" required>
+                <label>Race or Ethnicity</label>
+                <select name="ethnicity" required>
                     <option value="" disabled selected>Select Ethnicity</option>
                     <option value="group A">Group A</option>
                     <option value="group B">Group B</option>
@@ -92,9 +106,9 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="block text-sm font-medium text-gray-700">Parental Level of Education</label>
-                <select class="w-full p-2" name="parental_level_of_education" required>
-                    <option value="" disabled selected>Select Parent Education</option>
+                <label>Parental Level of Education</label>
+                <select name="parental_level_of_education" required>
+                    <option value="" disabled selected>Select Education Level</option>
                     <option value="associate's degree">Associate's Degree</option>
                     <option value="bachelor's degree">Bachelor's Degree</option>
                     <option value="high school">High School</option>
@@ -104,35 +118,35 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="block text-sm font-medium text-gray-700">Lunch Type</label>
-                <select class="w-full p-2" name="lunch" required>
+                <label>Lunch Type</label>
+                <select name="lunch" required>
                     <option value="" disabled selected>Select Lunch Type</option>
                     <option value="free/reduced">Free/Reduced</option>
                     <option value="standard">Standard</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="block text-sm font-medium text-gray-700">Test Preparation Course</label>
-                <select class="w-full p-2" name="test_preparation_course" required>
-                    <option value="" disabled selected>Select Test Course</option>
+                <label>Test Preparation Course</label>
+                <select name="test_preparation_course" required>
+                    <option value="" disabled selected>Select Course</option>
                     <option value="none">None</option>
                     <option value="completed">Completed</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="block text-sm font-medium text-gray-700">Writing Score (0-100)</label>
-                <input class="w-full p-2" type="number" name="writing_score" min="0" max="100" required>
+                <label>Writing Score (0-100)</label>
+                <input type="number" name="writing_score" min="0" max="100" required>
             </div>
             <div class="form-group">
-                <label class="block text-sm font-medium text-gray-700">Reading Score (0-100)</label>
-                <input class="w-full p-2" type="number" name="reading_score" min="0" max="100" required>
+                <label>Reading Score (0-100)</label>
+                <input type="number" name="reading_score" min="0" max="100" required>
             </div>
-            <div class="form-group text-center">
-                <input class="btn-primary" type="submit" value="Predict Your Maths Score">
+            <div class="form-group">
+                <input type="submit" value="Predict Now" class="submit-btn">
             </div>
         </form>
         {% if results != "Error occurred" and results is not none %}
-            <h2 class="result">The prediction is {{ results }}</h2>
+            <h2 class="result">Predicted Maths Score: {{ results }}</h2>
         {% endif %}
     </div>
 </body>
